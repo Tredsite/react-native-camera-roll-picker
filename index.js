@@ -35,7 +35,7 @@ var CameraRollPicker = React.createClass({
 
     opacity: React.PropTypes.number,
 
-    background: React.propTypes.string,
+    background: React.PropTypes.string,
 
     assetType: React.PropTypes.oneOf([
       'Photos',
