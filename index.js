@@ -74,8 +74,8 @@ var CameraRollPicker = React.createClass({
   componentDidMount: function() {
     var { width } = Dimensions.get('window');
 
-    var imageMargin = this.props.imageMargin,
-        imagesPerRow = this.props.imagesPerRow;
+    var imageMargin = this.props.imageMargin;
+    var imagesPerRow = this.props.imagesPerRow;
 
     this._imageSize = (width - (imagesPerRow + 1) * imageMargin) / imagesPerRow;
 
@@ -179,7 +179,7 @@ var CameraRollPicker = React.createClass({
                           :
                           <Image
                             style={[ styles.checkIcon, { width: 25, height: 25, right: imageMargin + 5 }, ]}
-                            source={require('./circle-check.png')}
+                            source={require('./assets/ios-check.png')}
                           />;
 
     return (
