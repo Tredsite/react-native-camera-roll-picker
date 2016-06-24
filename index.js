@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
   },
   checkIcon: {
     position: 'absolute',
-    top: 5,
+    bottom: 5,
     backgroundColor: 'transparent',
   },
 });
