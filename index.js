@@ -199,7 +199,7 @@ var CameraRollPicker = React.createClass({
                   {
                     this.state.selected.indexOf(image.uri) >= 0
                     ?
-                    <View style={{backgroundColor: '#fff', opacity: this.props.opacity,}}
+                    <View style={{backgroundColor: '#fff', opacity: this.props.opacity,}}>
                       <Image
                         style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
                         source={{ uri: image.uri }}
