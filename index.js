@@ -181,7 +181,7 @@ var CameraRollPicker = React.createClass({
                           this.props.selectedMarker
                           :
                           <Image
-                            style={[ styles.checkIcon, { width: 25, height: 25, right: imageMargin + 5 }, ]}
+                            style={[ styles.checkIcon, { opacity: this.props.opacity, width: 20, height: 20, right: imageMargin + 5 }, ]}
                             source={require('./assets/ios-check.png')}
                           />;
 
@@ -232,7 +232,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 5,
     backgroundColor: '#fff',
-    opacity: this.props.opacity
   },
 });
 
