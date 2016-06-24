@@ -203,7 +203,7 @@ var CameraRollPicker = React.createClass({
                       <Image
                         style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
                         source={{ uri: image.uri }}
-                      >
+                      />
                     </View>
                     :
                     <Image
