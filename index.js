@@ -181,7 +181,7 @@ var CameraRollPicker = React.createClass({
                           this.props.selectedMarker
                           :
                           <Image
-                            style={[ styles.checkIcon, { opacity: this.props.opacity, width: 20, height: 20, right: imageMargin + 5 }, ]}
+                            style={[ styles.checkIcon, { width: 20, height: 20, right: imageMargin + 5 }, ]}
                             source={require('./assets/ios-check.png')}
                           />;
 
@@ -196,10 +196,21 @@ var CameraRollPicker = React.createClass({
                   key={image.uri}
                   style={{ position: 'relative', marginBottom: imageMargin, }}
                   onPress={this._selectImage.bind(null, image.uri)}>
-                  <Image
-                    style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
-                    source={{ uri: image.uri }}
-                  >
+                  {
+                    this.state.selected.indexOf(image.uri) >= 0
+                    ?
+                    <View style={{backgroundColor: '#fff', opacity: this.props.opacity,}}
+                      <Image
+                        style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
+                        source={{ uri: image.uri }}
+                      >
+                    </View>
+                    :
+                    <Image
+                      style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
+                      source={{ uri: image.uri }}
+                    >
+                  }
                     {
                       this.state.selected.indexOf(image.uri) >= 0
                       ?
@@ -232,6 +243,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 5,
     backgroundColor: '#fff',
+    background: 'transparent',
   },
 });
 
