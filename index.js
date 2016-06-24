@@ -33,6 +33,8 @@ var CameraRollPicker = React.createClass({
 
     maximum: React.PropTypes.number,
 
+    opacity: React.PropTypes.number,
+
     assetType: React.PropTypes.oneOf([
       'Photos',
       'Videos',
@@ -52,6 +54,7 @@ var CameraRollPicker = React.createClass({
       batchSize: 30,
       maximum: 15,
       imagesPerRow: 3,
+      opacity: 0,
       imageMargin: 5,
       selectedMarker: null,
       assetType: 'Photos',
@@ -228,7 +231,8 @@ const styles = StyleSheet.create({
   checkIcon: {
     position: 'absolute',
     bottom: 5,
-    backgroundColor: 'transparent',
+    backgroundColor: '#fff',
+    opacity: this.props.opacity
   },
 });
 
