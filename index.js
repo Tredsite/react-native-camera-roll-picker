@@ -28,7 +28,7 @@ var CameraRollPicker = React.createClass({
     ]),
     batchSize: React.PropTypes.number,
     backgroundColor: React.PropTypes.string,
-    opacity: React.PropTypes.string,
+    opacity: React.PropTypes.number,
     maximum: React.PropTypes.number,
     assetType: React.PropTypes.oneOf([
       'Photos',
@@ -189,7 +189,7 @@ var CameraRollPicker = React.createClass({
                   key={image.uri}
                   style={{ position: 'relative', marginBottom: imageMargin, }}
                   onPress={this._selectImage.bind(null, image.uri)}>
-                  <View style={{position: absolute, top: 0, bottom: 0, left: 0, right: 0,}}>
+                  <View style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0,}}>
                     <Image
                       style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
                       source={{ uri: image.uri }}>
