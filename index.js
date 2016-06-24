@@ -1,8 +1,6 @@
 'use strict';
 
-var React = require('react');
-var ReactNative = require('react-native');
-
+var React = require('react-native');
 var {
   ActivityIndicatorIOS,
   CameraRoll,
@@ -15,7 +13,7 @@ var {
   TouchableOpacity,
   ScrollView,
   Dimensions,
-} = ReactNative;
+} = React;
 
 var CameraRollPicker = React.createClass({
   propTypes: {
@@ -28,21 +26,17 @@ var CameraRollPicker = React.createClass({
       'PhotoStream',
       'SavedPhotos',
     ]),
-
     batchSize: React.PropTypes.number,
-
+    backgroundColor: React.PropTypes.string,
+    opacity: React.PropTypes.string,
     maximum: React.PropTypes.number,
-
     assetType: React.PropTypes.oneOf([
       'Photos',
       'Videos',
       'All',
     ]),
-
     imagesPerRow: React.PropTypes.number,
-
     imageMargin: React.PropTypes.number,
-
     callback: React.PropTypes.func,
   },
 
@@ -190,23 +184,28 @@ var CameraRollPicker = React.createClass({
         <View style={[ styles.imageContainer, { padding: imageMargin, paddingRight: 0, }, ]}>
           { this.state.images.map((image) => {
               return (
+                <View style={{flex: 1, alignItems: 'center',}}>
                 <TouchableOpacity
                   key={image.uri}
                   style={{ position: 'relative', marginBottom: imageMargin, }}
                   onPress={this._selectImage.bind(null, image.uri)}>
-                  <Image
-                    style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
-                    source={{ uri: image.uri }}
-                  >
-                    {
-                      this.state.selected.indexOf(image.uri) >= 0
-                      ?
-                      selectedMarker
-                      :
-                      null
-                    }
-                  </Image>
+                  <View style={{position: absolute, top: 0, bottom: 0, left: 0, right: 0,}}>
+                    <Image
+                      style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
+                      source={{ uri: image.uri }}>
+                      {
+                        this.state.selected.indexOf(image.uri) >= 0
+                        ?
+                        selectedMarker
+                        :
+                        null
+                      }
+                    </Image>
+                  </View>
+                  <View style={{backgroundColor: this.props.backgroundColor, opacity: this.props.opacity}}>
+                  </View>
                 </TouchableOpacity>
+                </View>
               );
             })
           }
