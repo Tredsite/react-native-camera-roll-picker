@@ -35,6 +35,8 @@ var CameraRollPicker = React.createClass({
 
     opacity: React.PropTypes.number,
 
+    background: React.propTypes.string,
+
     assetType: React.PropTypes.oneOf([
       'Photos',
       'Videos',
@@ -55,6 +57,7 @@ var CameraRollPicker = React.createClass({
       maximum: 15,
       imagesPerRow: 3,
       opacity: 0,
+      background: 'transparent',
       imageMargin: 5,
       selectedMarker: null,
       assetType: 'Photos',
@@ -196,21 +199,11 @@ var CameraRollPicker = React.createClass({
                   key={image.uri}
                   style={{ position: 'relative', marginBottom: imageMargin, }}
                   onPress={this._selectImage.bind(null, image.uri)}>
-                  {
-                    this.state.selected.indexOf(image.uri) >= 0
-                    ?
-                    <View style={{backgroundColor: '#fff', opacity: this.props.opacity,}}>
-                      <Image
-                        style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
-                        source={{ uri: image.uri }}
-                      />
-                    </View>
-                    :
-                    <Image
-                      style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
-                      source={{ uri: image.uri }}
-                    >
-                  }
+                  <View style={{background: this.props.background, opacity: this.props.opacity}}>
+                  <Image
+                    style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
+                    source={{ uri: image.uri }}
+                  >
                     {
                       this.state.selected.indexOf(image.uri) >= 0
                       ?
@@ -219,6 +212,7 @@ var CameraRollPicker = React.createClass({
                       null
                     }
                   </Image>
+                  </View>
                 </TouchableOpacity>
               );
             })
