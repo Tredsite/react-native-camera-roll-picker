@@ -33,10 +33,6 @@ var CameraRollPicker = React.createClass({
 
     maximum: React.PropTypes.number,
 
-    opacity: React.PropTypes.number,
-
-    background: React.PropTypes.string,
-
     assetType: React.PropTypes.oneOf([
       'Photos',
       'Videos',
@@ -57,7 +53,6 @@ var CameraRollPicker = React.createClass({
       maximum: 15,
       imagesPerRow: 3,
       opacity: 0,
-      background: 'transparent',
       imageMargin: 5,
       selectedMarker: null,
       assetType: 'Photos',
@@ -184,7 +179,7 @@ var CameraRollPicker = React.createClass({
                           this.props.selectedMarker
                           :
                           <Image
-                            style={[ styles.checkIcon, { width: 20, height: 20, right: imageMargin + 5 }, ]}
+                            style={[ styles.checkIcon, { width: 25, height: 25, right: imageMargin + 5 }, ]}
                             source={require('./assets/ios-check.png')}
                           />;
 
@@ -199,7 +194,6 @@ var CameraRollPicker = React.createClass({
                   key={image.uri}
                   style={{ position: 'relative', marginBottom: imageMargin, }}
                   onPress={this._selectImage.bind(null, image.uri)}>
-                  <View style={{background: this.props.background, opacity: this.props.opacity}}>
                   <Image
                     style={{ width: imageSize, height: imageSize, marginRight: imageMargin, }}
                     source={{ uri: image.uri }}
@@ -212,7 +206,6 @@ var CameraRollPicker = React.createClass({
                       null
                     }
                   </Image>
-                  </View>
                 </TouchableOpacity>
               );
             })
@@ -236,8 +229,7 @@ const styles = StyleSheet.create({
   checkIcon: {
     position: 'absolute',
     bottom: 5,
-    backgroundColor: '#fff',
-    background: 'transparent',
+    backgroundColor: 'transparent',
   },
 });
 
